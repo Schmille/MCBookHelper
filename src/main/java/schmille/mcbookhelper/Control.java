@@ -23,11 +23,13 @@ public class Control {
     private String raw;
     private List<String> pages;
     private GameEdition edition;
+    private int current;
 
     public Control() {
         JAVA_EDITION = new JavaEdition();
         BEDROCK_EDITION = new BedrockEdition();
         pages = new ArrayList<>();
+        current = 0;
     }
 
     public void autopage(String input, EnumMethod method, EnumGameEdition gameEdition) throws WillNotFitException {
@@ -67,7 +69,7 @@ public class Control {
                 String linetext = sbLine.append("\n").toString();
                 sbPage.append(linetext.startsWith(" ") ? linetext.replaceFirst(" ", "") : linetext);
             }
-            pages.add(sbPage.toString());
+            pages.add(sbPage.toString().trim());
 
             if(queue.isEmpty())
                 break;
@@ -79,7 +81,7 @@ public class Control {
 
     private void fancyAutopage(String input) throws WillNotFitException {
 
-          if(input.length() <= edition.getMaxCharsPerPage()) {
+      if(input.length() <= edition.getMaxCharsPerPage()) {
             pages.add(input.trim());
             return;
         }
@@ -89,14 +91,18 @@ public class Control {
             StringBuilder sbPage = new StringBuilder();
 
             for (int line = 0; line < edition.getMaxLineCount(); line++) {
-                if(list.isEmpty())
-                    break;
 
                 int pixel = 0;
                 StringBuilder sbLine = new StringBuilder();
 
                 // Run through all characters and check if the line can fit it by character count and pixel length (based on testing)
                 while (!list.isEmpty() && (pixel = pixel + PixelLookupTable.lookup(list.get(0))) <= 90 && sbLine.toString().length() < edition.getLineLength(line)) {
+                    if(list.get(0) =='\n') {
+                        sbLine.append(list.remove(0));
+                        line++;
+                        break;
+                    }
+
                     sbLine.append(list.remove(0));
                 }
 
@@ -105,16 +111,18 @@ public class Control {
                 // find the last optimal split point and create a new line based on it
                 int lastSplit = TextUtils.furthestIndexOfAny(linetext, BREAK_ON);
                 if(lastSplit != -1 && lastSplit != 0) {
-                    sbPage.append(linetext, 0, lastSplit);
+                    sbPage.append(linetext.substring( 0, lastSplit).trim());
+                    sbPage.append("\n");
+
                     list.addAll(0, TextUtils.toCharList(linetext.substring(lastSplit)));
                 }
                 else {
-                    sbPage.append(linetext);
+                    sbPage.append(linetext.trim());
                     break;
                 }
 
             }
-            pages.add(sbPage.toString());
+            pages.add(sbPage.toString().trim());
 
             if(list.isEmpty())
                 break;
@@ -124,8 +132,67 @@ public class Control {
             throw new WillNotFitException(edition, EnumMethod.SIZE);
     }
 
-    public List<String> getPages() {
-        return pages;
+    public String nextPage() {
+        if(pages.isEmpty())
+            return "";
+
+        if(current < pages.size() - 1)
+            current++;
+
+        return pages.get(current);
+    }
+
+    public String previousPage() {
+        if(pages.isEmpty())
+            return "";
+
+        if(current > 0)
+            current--;
+
+        return pages.get(current);
+    }
+
+    public String currentPage() {
+        if(pages.isEmpty())
+            return "";
+
+        return pages.get(current);
+    }
+
+    public int getPageCount() {
+        return pages.size();
+    }
+
+    public int getCurrentPageIndex() {
+        return current;
+    }
+
+    public void clearCurrent() {
+        pages.set(current, "");
+    }
+
+    public void clearPages() {
+        pages.clear();
+        current = 0;
+    }
+
+    public void beforeFirst() {
+        current = -1;
+    }
+
+    public String getAllPages() {
+        StringBuilder sb = new StringBuilder();
+
+        for(String s : pages) {
+            sb.append(s.trim());
+            sb.append("\n");
+        }
+
+        return sb.toString();
+    }
+
+    public boolean isOnLast() {
+        return current == pages.size() - 1;
     }
 
 }

@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="schmille.mcbookhelper.gui.MainGui">
+  <grid id="27dc6" binding="mainPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
+    <constraints>
+      <xy x="20" y="20" width="500" height="400"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <grid id="81b22" binding="bottomPanel" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+        <constraints border-constraint="South"/>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="d15c4" class="javax.swing.JButton" binding="btnCopyPage">
+            <constraints/>
+            <properties>
+              <text value="Copy page"/>
+            </properties>
+          </component>
+          <component id="be062" class="javax.swing.JButton" binding="btnCopyAll">
+            <constraints/>
+            <properties>
+              <text value="Copy all"/>
+            </properties>
+          </component>
+          <component id="31264" class="javax.swing.JButton" binding="btnClearPage">
+            <constraints/>
+            <properties>
+              <text value="Clear page"/>
+            </properties>
+          </component>
+          <component id="75ee7" class="javax.swing.JButton" binding="btnClearAll">
+            <constraints/>
+            <properties>
+              <text value="Clear all"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <grid id="5fdc5" binding="topPanel" layout-manager="GridBagLayout">
+        <constraints border-constraint="North"/>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <grid id="38973" binding="editionPanel" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+              <gridbag top="0" left="0" bottom="5" right="0" weightx="0.1" weighty="0.0"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="fa901" class="javax.swing.JComboBox" binding="cobEdition">
+                <constraints/>
+                <properties>
+                  <model>
+                    <item value="Java Edition"/>
+                    <item value="Bedrock Edition"/>
+                  </model>
+                </properties>
+              </component>
+              <component id="d4718" class="javax.swing.JComboBox" binding="cobMethod">
+                <constraints/>
+                <properties>
+                  <model>
+                    <item value="Prefer fancy print"/>
+                    <item value="Use minimal size"/>
+                    <item value="Print fancy"/>
+                  </model>
+                </properties>
+              </component>
+              <component id="1994" class="javax.swing.JButton" binding="btnImport">
+                <constraints/>
+                <properties>
+                  <text value="Import"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <grid id="88ce2" binding="timePanel" layout-manager="GridBagLayout">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+              <gridbag top="0" left="0" bottom="5" right="0" weightx="0.1" weighty="0.0"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <hspacer id="ebd37">
+                <constraints>
+                  <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                  <gridbag weightx="0.0" weighty="0.0"/>
+                </constraints>
+              </hspacer>
+              <vspacer id="d2208">
+                <constraints>
+                  <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                  <gridbag weightx="0.0" weighty="0.0"/>
+                </constraints>
+              </vspacer>
+              <component id="d3b40" class="javax.swing.JSpinner" binding="spInterval">
+                <constraints>
+                  <grid row="1" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                  <gridbag top="0" left="0" bottom="0" right="5" weightx="0.0" weighty="0.0"/>
+                </constraints>
+                <properties>
+                  <opaque value="false"/>
+                  <preferredSize width="78" height="30"/>
+                </properties>
+              </component>
+              <component id="f0c3a" class="javax.swing.JLabel" binding="labelInterval">
+                <constraints>
+                  <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                  <gridbag top="0" left="0" bottom="0" right="3" weightx="0.0" weighty="0.0"/>
+                </constraints>
+                <properties>
+                  <text value="Interval"/>
+                </properties>
+              </component>
+              <component id="a623f" class="javax.swing.JButton" binding="btnStart">
+                <constraints>
+                  <grid row="1" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                  <gridbag weightx="0.0" weighty="0.0"/>
+                </constraints>
+                <properties>
+                  <text value="Start"/>
+                </properties>
+              </component>
+              <hspacer id="5fb74">
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                  <gridbag weightx="0.1" weighty="0.0"/>
+                </constraints>
+              </hspacer>
+              <component id="e5d" class="javax.swing.JProgressBar" binding="pbTimer">
+                <constraints>
+                  <grid row="2" column="0" row-span="1" col-span="6" vsize-policy="0" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                  <gridbag top="5" left="0" bottom="0" right="0" weightx="0.2" weighty="0.5"/>
+                </constraints>
+                <properties>
+                  <preferredSize width="146" height="15"/>
+                  <stringPainted value="false"/>
+                </properties>
+              </component>
+              <component id="6c853" class="javax.swing.JLabel" binding="labelTime">
+                <constraints>
+                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <gridbag weightx="0.0" weighty="0.1"/>
+                </constraints>
+                <properties>
+                  <font size="18"/>
+                  <text value="00:00"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+        </children>
+      </grid>
+      <grid id="720f8" binding="centerPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
+        <constraints border-constraint="Center"/>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <grid id="a5424" binding="navigationPanel" layout-manager="GridBagLayout">
+            <constraints border-constraint="North"/>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="7f7ee" class="javax.swing.JButton" binding="btnPrevious">
+                <constraints>
+                  <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                  <gridbag weightx="0.0" weighty="0.0" ipadx="2" ipady="2"/>
+                </constraints>
+                <properties>
+                  <text value="&lt;"/>
+                </properties>
+              </component>
+              <component id="efeb5" class="javax.swing.JLabel" binding="labelPage">
+                <constraints>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                  <gridbag weightx="0.0" weighty="0.0" ipadx="2" ipady="2"/>
+                </constraints>
+                <properties>
+                  <font size="16"/>
+                  <text value="Page 0 / 100"/>
+                </properties>
+              </component>
+              <component id="a01f8" class="javax.swing.JButton" binding="btnNext">
+                <constraints>
+                  <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                  <gridbag weightx="0.0" weighty="0.0" ipadx="2" ipady="2"/>
+                </constraints>
+                <properties>
+                  <text value="&gt;"/>
+                </properties>
+              </component>
+              <hspacer id="2611b">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                  <gridbag weightx="0.1" weighty="0.0"/>
+                </constraints>
+              </hspacer>
+            </children>
+          </grid>
+          <scrollpane id="8783f" binding="scrollPane">
+            <constraints border-constraint="Center"/>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="3eb31" class="javax.swing.JTextArea" binding="textArea">
+                <constraints/>
+                <properties>
+                  <preferredSize width="50" height="50"/>
+                </properties>
+              </component>
+            </children>
+          </scrollpane>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>
